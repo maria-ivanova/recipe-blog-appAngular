@@ -1,0 +1,31 @@
+<header class="sec header_sec" id="home">
+    <div class="container">
+        <app-logo></app-logo>
+        <app-search-form class="search_form_box"></app-search-form>
+        <app-mobile-menu></app-mobile-menu>
+
+        <div class="header_right">
+            <ul *ngIf="!isLogged" class="menu">
+                <li><a href="">Вход</a></li>
+
+                <li><a href="">Регистрация</a></li>
+            </ul>
+            
+            <ul *ngIf="isLogged" class="menu">
+                <li class="">
+                    <a href="javascript:void(0)">Моят профил <fa-icon icon="chevron-down"></fa-icon></a>
+                    
+                    <ul class="submenu">
+                        <li><a href="">Създай рецепта</a></li>
+
+                        <li><a href="">Моите рецепти</a></li>
+
+                        <li><a href="">Профил</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="">Изход</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
