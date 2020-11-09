@@ -15,6 +15,8 @@ import { HomeComponent } from './home/home.component';
 import { IndexBannerComponent } from './index-banner/index-banner.component';
 import { ItemsListComponent } from './items-list/items-list.component';
 import { SingleItemComponent } from './single-item/single-item.component';
+import { IndexInfoComponent } from './index-info/index-info.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { SingleItemComponent } from './single-item/single-item.component';
     HomeComponent,
     IndexBannerComponent,
     ItemsListComponent,
-    SingleItemComponent
+    SingleItemComponent,
+    IndexInfoComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
