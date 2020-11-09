@@ -6,9 +6,9 @@
 
         <div class="header_right">
             <ul *ngIf="!isLogged" class="menu">
-                <li><a href="">Вход</a></li>
+                <li><a  routerLink="/login">Вход</a></li>
 
-                <li><a href="">Регистрация</a></li>
+                <li><a routerLink="/register">Регистрация</a></li>
             </ul>
             
             <ul *ngIf="isLogged" class="menu">
