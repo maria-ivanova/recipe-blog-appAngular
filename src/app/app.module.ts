@@ -10,6 +10,11 @@ import { MobileMenuComponent } from './mobile-menu/mobile-menu.component';
 
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faChevronDown, faUser, faHeart, faUpload, faTimes, faEdit, faBars } from '@fortawesome/free-solid-svg-icons';
+import { TopmenuComponent } from './topmenu/topmenu.component';
+import { HomeComponent } from './home/home.component';
+import { IndexBannerComponent } from './index-banner/index-banner.component';
+import { ItemsListComponent } from './items-list/items-list.component';
+import { SingleItemComponent } from './single-item/single-item.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +22,12 @@ import { faChevronDown, faUser, faHeart, faUpload, faTimes, faEdit, faBars } fro
     HeaderComponent,
     LogoComponent,
     SearchFormComponent,
-    MobileMenuComponent
+    MobileMenuComponent,
+    TopmenuComponent,
+    HomeComponent,
+    IndexBannerComponent,
+    ItemsListComponent,
+    SingleItemComponent
   ],
   imports: [
     BrowserModule,
