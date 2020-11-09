@@ -17,6 +17,8 @@ import { ItemsListComponent } from './items-list/items-list.component';
 import { SingleItemComponent } from './single-item/single-item.component';
 import { IndexInfoComponent } from './index-info/index-info.component';
 import { FooterComponent } from './footer/footer.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { FooterComponent } from './footer/footer.component';
     ItemsListComponent,
     SingleItemComponent,
     IndexInfoComponent,
-    FooterComponent
+    FooterComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
