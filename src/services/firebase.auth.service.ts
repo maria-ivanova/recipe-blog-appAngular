@@ -3,10 +3,13 @@ import { AngularFireAuth } from '@angular/fire/auth';
 
 @Injectable()
 export class UserAuthService {
-    constructor(private firebaseAuth:  AngularFireAuth) {
-    }
+    private authState: any;
 
-    sharedUser: {};
+    constructor(private firebaseAuth: AngularFireAuth) {
+            this.firebaseAuth.authState.subscribe((auth) => {
+            this.authState = auth
+        });
+    }
 
     registerUser(email, password) {
         return this.firebaseAuth.createUserWithEmailAndPassword(email, password);
@@ -20,5 +23,11 @@ export class UserAuthService {
         return this.firebaseAuth.signOut();
     };
 
+    get authenticated(): boolean {
+        return this.authState !== null;
+    }
     
+    get user(): any {
+        return this.authenticated ? this.authState : null;
+    }
 }

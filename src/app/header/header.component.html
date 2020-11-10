@@ -5,15 +5,15 @@
         <app-mobile-menu></app-mobile-menu>
 
         <div class="header_right">
-            <ul *ngIf="!userAuthService.sharedUser" class="menu">
+            <ul *ngIf="!userAuthService.user" class="menu">
                 <li><a  routerLink="/login">Вход</a></li>
 
                 <li><a routerLink="/register">Регистрация</a></li>
             </ul>
             
-            <ul *ngIf="userAuthService.sharedUser" class="menu">
+            <ul *ngIf="userAuthService.user" class="menu">
                 <li class="">
-                    <a href="javascript:void(0)">Моят профил <fa-icon icon="chevron-down"></fa-icon></a>
+                    <span>{{userAuthService.user.email}} <fa-icon icon="chevron-down"></fa-icon></span>
                     
                     <ul class="submenu">
                         <li><a href="">Създай рецепта</a></li>

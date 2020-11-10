@@ -47,7 +47,6 @@ errorMsg: string = '';
           displayName: this.model.username
         })
 
-        this.userAuthService.sharedUser = response.user;
         this.router.navigate([ROUTES.HOME]);
       })
       .catch(err => {

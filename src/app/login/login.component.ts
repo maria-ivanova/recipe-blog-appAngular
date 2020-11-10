@@ -36,11 +36,9 @@ export class LoginComponent implements OnInit {
 
     this.userAuthService.loginUser(this.model.email, this.model.password)
       .then(response => {
-        this.userAuthService.sharedUser = response.user;
         this.router.navigate([ROUTES.PROFILE]);
       })
       .catch(err => {
-        console.log(this.userAuthService.sharedUser)
         this.errorMsg = customErrors['wrongUserPassword']
       })
   }
