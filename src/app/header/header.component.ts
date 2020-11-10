@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { UserAuthService } from '../../services/firebase.auth.service';
+import ROUTES from '../../constants/routes';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +10,15 @@ import { UserAuthService } from '../../services/firebase.auth.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  isLogged: boolean = false;
 
-  constructor(public userAuthService: UserAuthService) { }
+  constructor(public userAuthService: UserAuthService, private router: Router ) { }
+
+  logout() {
+    this.userAuthService.logoutUser();
+    this.router.navigate([ROUTES.HOME]);
+    this.userAuthService.sharedUser = undefined;
+  }
+  
 
   ngOnInit(): void {
   }

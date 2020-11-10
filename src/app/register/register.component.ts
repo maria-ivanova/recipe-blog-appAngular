@@ -6,6 +6,7 @@ import { firebaseErrors, customErrors } from '../../constants/errors';
 
 import { UserAuthService } from '../../services/firebase.auth.service';
 import { RegisterModel } from '../../models/register.model';
+import ROUTES from '../../constants/routes';
 
 @Component({
   selector: 'app-register',
@@ -29,7 +30,6 @@ errorMsg: string = '';
 
   register() {
     this.model = this.registerForm.value;
-    console.log(this.registerForm)
 
     if(this.model.username === '' || this.model.email === '' || this.model.password === '' || this.model.rePassword === '') {
       this.errorMsg = customErrors['requiredFields'];
@@ -48,7 +48,7 @@ errorMsg: string = '';
         })
 
         this.userAuthService.sharedUser = response.user;
-        this.router.navigate(['/']);
+        this.router.navigate([ROUTES.HOME]);
       })
       .catch(err => {
         this.errorMsg = firebaseErrors[err.code] || customErrors['failedRegister'];

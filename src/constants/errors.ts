@@ -14,4 +14,5 @@ export const customErrors = {
     'matchingPasswords': 'Паролите трябва да съвпадат!',
     'failedRegister': 'Неуспешно регистриране на потребител!',
     'requiredFields': 'Попълнете всички полета!',
+    'wrongUserPassword': 'Грешно потребителско име или парола!',
 }

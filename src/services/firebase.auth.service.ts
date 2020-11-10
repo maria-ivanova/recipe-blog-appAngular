@@ -12,5 +12,13 @@ export class UserAuthService {
         return this.firebaseAuth.createUserWithEmailAndPassword(email, password);
     }
 
+    loginUser(email, password) {
+        return this.firebaseAuth.signInWithEmailAndPassword(email, password);
+    }
+
+    logoutUser() {
+        return this.firebaseAuth.signOut();
+    };
+
     
 }

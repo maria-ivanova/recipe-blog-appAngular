@@ -1,22 +1,45 @@
-<!--<section class="sec content_sec">
+<section class="sec content_sec">
     <div class="container tcenter">
         <h2 class="page_title">
             <span>Вход</span>
         </h2>
 
-        <form action="" method="POST" class="user_form">
+        <form [formGroup]="loginForm" (ngSubmit)="login()" class="user_form">
+            <div *ngIf="errorMsg" class="errorMsg">
+                {{errorMsg}}
+            </div>
+
             <div class="input_row">
+                <div *ngIf="getFormControls.email.touched && getFormControls.email.errors?.required"
+                    class="errorMsg">
+                    {{customErrors.requredEmail}}
+                </div>
+
+                <div *ngIf="getFormControls.email.touched && !getFormControls.email.errors?.required && !getFormControls.email.valid"
+                    class="errorMsg">
+                    {{customErrors.invalidEmail}}
+                </div>
+
                 <label class="lbl">
                     Имейл
                     <span class="tred">*</span>
                 </label>
 
-                <input type="text" name="userMail" class="input_text" required>
+                <input type="email" name="userMail" class="input_text" formControlName="email">
             </div>
 
             <div class="input_row">
-                <label class="lbl">Парола</label>
-                <input type="password" name="password" class="input_text" required>
+                <div *ngIf="getFormControls.password.touched && getFormControls.password.errors?.required"
+                    class="errorMsg">
+                    {{customErrors.requiredPassword}}
+                </div>
+                
+                <label class="lbl">
+                    Парола
+                    <span class="tred">*</span>
+                </label>
+
+                <input type="password" name="password" class="input_text" formControlName="password">
             </div>
 
             <div class="input_row">
@@ -28,4 +51,4 @@
             </div>
         </form>
     </div>
-</section>-->
+</section>
