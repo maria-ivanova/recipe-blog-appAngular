@@ -5,12 +5,9 @@
         </h2>
 
         <form [formGroup]="registerForm" (ngSubmit)="register()" class="user_form">
-
-           <!-- <div *ngIf="myForm.get('currentPassword').touched && myForm.get('currentPassword').invalid">
-                <div *ngIf="myForm.get('currentPassword').errors.required">Current password is required!</div>
-                <div *ngIf="myForm.get('currentPassword').errors.minlength">Current password should be at least 3
-                    symbols long!</div>
-            </div>-->
+            <div *ngIf="errorMsg" class="errorMsg">
+                {{errorMsg}}
+            </div>
 
             <div class="input_row">
                 <div *ngIf="getFormControls.username.touched && getFormControls.username.errors?.required" 
@@ -78,7 +75,7 @@
             </div>
 
             <div class="input_row">
-                <button type="submit" value="login" class="btn">Регистрирай се</button>
+                <button type="submit" value="register" class="btn">Регистрирай се</button>
             </div>
         </form>
     </div>

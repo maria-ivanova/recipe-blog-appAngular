@@ -5,13 +5,13 @@
         <app-mobile-menu></app-mobile-menu>
 
         <div class="header_right">
-            <ul *ngIf="!isLogged" class="menu">
+            <ul *ngIf="!userAuthService.sharedUser" class="menu">
                 <li><a  routerLink="/login">Вход</a></li>
 
                 <li><a routerLink="/register">Регистрация</a></li>
             </ul>
             
-            <ul *ngIf="isLogged" class="menu">
+            <ul *ngIf="userAuthService.sharedUser" class="menu">
                 <li class="">
                     <a href="javascript:void(0)">Моят профил <fa-icon icon="chevron-down"></fa-icon></a>
                     

@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { customErrors } from '../../constants/errors';
+import { Router } from '@angular/router';
+
+import { firebaseErrors, customErrors } from '../../constants/errors';
+
+import { UserAuthService } from '../../services/firebase.auth.service';
+import { RegisterModel } from '../../models/register.model';
 
 @Component({
   selector: 'app-register',
@@ -15,21 +20,44 @@ registerForm = new FormGroup({
   'rePassword': new FormControl('')
 })
 
+
 customErrors = customErrors;
+model: RegisterModel;
+errorMsg: string = '';
 
-register() {
-  console.log(this.registerForm);
-  console.log(this.registerForm.get('username').value);
+  constructor(public userAuthService: UserAuthService, private router: Router ) { }
 
+  register() {
+    this.model = this.registerForm.value;
+    console.log(this.registerForm)
+
+    if(this.model.username === '' || this.model.email === '' || this.model.password === '' || this.model.rePassword === '') {
+      this.errorMsg = customErrors['requiredFields'];
+      return;
+    }
+
+    if(this.model.password !== this.model.rePassword) {
+      this.errorMsg = customErrors['matchingPasswords'];
+      return;
+    }
+
+    this.userAuthService.registerUser(this.model.email, this.model.password)
+      .then(response => {
+        response.user.updateProfile({
+          displayName: this.model.username
+        })
+
+        this.userAuthService.sharedUser = response.user;
+        this.router.navigate(['/']);
+      })
+      .catch(err => {
+        this.errorMsg = firebaseErrors[err.code] || customErrors['failedRegister'];
+      });
+  }
   
-
-}
-
-get getFormControls() {
-  return this.registerForm.controls;
-}
-
-  constructor() { }
+  get getFormControls() {
+    return this.registerForm.controls;
+  }
 
   ngOnInit(): void {
   }
