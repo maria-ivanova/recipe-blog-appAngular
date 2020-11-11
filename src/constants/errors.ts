@@ -3,6 +3,7 @@ export const firebaseErrors = {
     'auth/email-already-in-use': 'Имейл адресът вече се използва от друг профил!',
     'auth/invalid-email': 'Невалиден имейл!',
     'auth/weak-password': 'Паролата трябва да съдържа поне 6 знака!',
+    'auth/requires-recent-login': 'За да промените паролата, трябва отново да влезете в профила си!'
 }
 
 export const customErrors = {
@@ -15,4 +16,5 @@ export const customErrors = {
     'failedRegister': 'Неуспешно регистриране на потребител!',
     'requiredFields': 'Попълнете всички полета!',
     'wrongUserPassword': 'Грешно потребителско име или парола!',
+    'failedChangePassword': 'Несупешна промяна на парола!',
 }

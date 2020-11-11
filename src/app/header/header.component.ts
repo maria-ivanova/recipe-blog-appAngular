@@ -16,7 +16,6 @@ export class HeaderComponent implements OnInit {
   logout() {
     this.userAuthService.logoutUser();
     this.router.navigate([ROUTES.HOME]);
-    this.userAuthService.sharedUser = undefined;
   }
   
 

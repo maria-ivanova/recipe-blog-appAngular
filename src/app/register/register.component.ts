@@ -21,7 +21,6 @@ registerForm = new FormGroup({
   'rePassword': new FormControl('')
 })
 
-
 customErrors = customErrors;
 model: RegisterModel;
 errorMsg: string = '';

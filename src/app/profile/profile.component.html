@@ -1,1 +1,67 @@
-<p>profile works!</p>
+<section class="sec content_sec">
+    <div class="container tcenter">
+        <h2 class="page_title">
+            <span>Профил</span>
+        </h2>
+
+        <form [formGroup]="profileForm" (ngSubmit)="updateUser()" class="profile_form">
+            <div *ngIf="errorMsg" class="errorMsg">
+                {{errorMsg}}
+            </div>
+
+            <div class="input_row">
+                <label class="lbl">
+                    Потребителско име
+                    <span class="tred">*</span>
+                </label>
+
+                <input type="text" [value]="userAuthService.user?.displayName" class="input_text" formControlName="username">
+            </div>
+
+            <div class="input_row">
+                <label class="lbl">
+                    Имейл
+                    <span class="tred">*</span>
+                </label>
+
+                <input type="text" [value]="userAuthService.user?.email" class="input_text" formControlName="email">
+            </div>
+
+            <div class="input_row">
+                <div *ngIf="getFormControls.password.touched && getFormControls.password.errors?.required"
+                    class="errorMsg">
+                    {{customErrors.requiredPassword}}
+                </div>
+
+                <div *ngIf="getFormControls.password.touched && getFormControls.password.errors?.minlength"
+                    class="errorMsg">
+                    {{customErrors.invalidPasswordLength}}
+                </div>
+
+                <label class="lbl">
+                    Парола
+                    <span class="tred">*</span>
+                </label>
+
+                <input type="password" class="input_text" formControlName="password">
+            </div>
+
+            <div class="input_row">
+                 <div *ngIf="getFormControls.rePassword.touched && getFormControls.password?.value !==  getFormControls.rePassword?.value"
+                    class="errorMsg">
+                    {{customErrors.matchingPasswords}}
+                </div>
+
+                <label class="lbl">Повтори паролата
+                    <span class="tred">*</span>
+                </label>
+
+                <input type="password" class="input_text" formControlName="rePassword">
+            </div>
+
+            <div class="input_row">
+                <button type="submit" value="login" class="btn">Редактирай</button>
+            </div>
+        </form>
+    </div>
+</section>

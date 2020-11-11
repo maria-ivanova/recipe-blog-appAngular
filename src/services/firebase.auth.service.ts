@@ -23,6 +23,10 @@ export class UserAuthService {
         return this.firebaseAuth.signOut();
     };
 
+    passwordUpdate(newPassword) {
+        return this.firebaseAuth.currentUser.then(data => data.updatePassword(newPassword));
+    }
+
     get authenticated(): boolean {
         return this.authState !== null;
     }

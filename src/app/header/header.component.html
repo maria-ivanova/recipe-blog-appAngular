@@ -14,13 +14,13 @@
             <ul *ngIf="userAuthService.user" class="menu">
                 <li class="">
                     <span>{{userAuthService.user.email}} <fa-icon icon="chevron-down"></fa-icon></span>
-                    
+
                     <ul class="submenu">
                         <li><a href="">Създай рецепта</a></li>
 
                         <li><a href="">Моите рецепти</a></li>
 
-                        <li><a href="">Профил</a></li>
+                        <li><a routerLink="/profile">Профил</a></li>
                     </ul>
                 </li>
 
