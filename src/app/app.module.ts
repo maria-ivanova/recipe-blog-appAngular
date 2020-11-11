@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms'
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -32,6 +33,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 
 import { UserAuthService } from '../services/firebase.auth.service';
+import { FirebaseRequestsService } from '../services/firebase.requests.service';
 
 @NgModule({
   declarations: [
@@ -54,6 +56,7 @@ import { UserAuthService } from '../services/firebase.auth.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     FontAwesomeModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
@@ -62,7 +65,7 @@ import { UserAuthService } from '../services/firebase.auth.service';
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
   ],
-  providers: [UserAuthService],
+  providers: [UserAuthService, FirebaseRequestsService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -1,11 +1,8 @@
 <section class="sec nav_sec">
     <div class="container">
         <nav class="topmenu">
-            <a href="">Начало</a>
-            <a href="">Салати</a>
-            <a href="">Супи</a>
-            <a href="">Основни ястия</a>
-            <a href="">Десерти</a>
+            <a routerLink="/">Начало</a>
+            <a  *ngFor="let category of allCategories" routerLink="/recipes/{{category}}">{{category}}</a>
         </nav>
     </div>
 </section>
