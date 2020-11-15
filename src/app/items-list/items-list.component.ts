@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, OnChanges, Input } from '@angular/core';
 
 import { FirebaseRequestsService } from '../../services/firebase.requests.service';
 import { IRecipe } from '../../interfaces/recipe.interface';
@@ -8,8 +8,10 @@ import { IRecipe } from '../../interfaces/recipe.interface';
   templateUrl: './items-list.component.html',
   styleUrls: ['./items-list.component.css']
 })
-export class ItemsListComponent implements OnInit {
+export class ItemsListComponent implements OnInit, OnChanges {
   @Input() sortCriterion: string;
+  @Input() filerCriterion: string;
+  @Input() secondFilterCriterion: string;
   @Input() maxElements: number;
   itemsList: IRecipe[];
 
@@ -24,17 +26,24 @@ export class ItemsListComponent implements OnInit {
         }
       })
 
+      if (this.filerCriterion && this.secondFilterCriterion !== 'Всички рецепти') {
+        this.itemsList = this.itemsList.filter(el => el[this.filerCriterion] === this.secondFilterCriterion);
+      }
+
       if (this.sortCriterion) {
         this.itemsList = this.itemsList.sort((a, b) => b[this.sortCriterion] - a[this.sortCriterion]);
       }
 
-      if(this.maxElements) {
+      if (this.maxElements) {
         this.itemsList = this.itemsList.slice(0, this.maxElements)
       }
     })
   }
 
   ngOnInit(): void {
+  }
+
+  ngOnChanges(): void {
     this.getAllItems();
   }
 

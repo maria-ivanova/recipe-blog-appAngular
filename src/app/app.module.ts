@@ -5,24 +5,9 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { LogoComponent } from './logo/logo.component';
-import { SearchFormComponent } from './search-form/search-form.component';
-import { MobileMenuComponent } from './mobile-menu/mobile-menu.component';
-
-import { TopmenuComponent } from './topmenu/topmenu.component';
-import { HomeComponent } from './home/home.component';
-import { IndexBannerComponent } from './index-banner/index-banner.component';
-import { ItemsListComponent } from './items-list/items-list.component';
-import { SingleItemComponent } from './single-item/single-item.component';
-import { IndexInfoComponent } from './index-info/index-info.component';
-import { FooterComponent } from './footer/footer.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { ProfileComponent } from './profile/profile.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
- import { ToastrModule } from 'ngx-toastr';
+import { ToastrModule } from 'ngx-toastr';
 
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faChevronDown, faUser, faHeart, faUpload, faTimes, faEdit, faBars } from '@fortawesome/free-solid-svg-icons';
@@ -34,6 +19,23 @@ import { environment } from '../environments/environment';
 
 import { UserAuthService } from '../services/firebase.auth.service';
 import { FirebaseRequestsService } from '../services/firebase.requests.service';
+
+import { HeaderComponent } from './header/header.component';
+import { LogoComponent } from './logo/logo.component';
+import { SearchFormComponent } from './search-form/search-form.component';
+import { MobileMenuComponent } from './mobile-menu/mobile-menu.component';
+import { TopmenuComponent } from './topmenu/topmenu.component';
+import { HomeComponent } from './home/home.component';
+import { IndexBannerComponent } from './index-banner/index-banner.component';
+import { ItemsListComponent } from './items-list/items-list.component';
+import { SingleItemComponent } from './single-item/single-item.component';
+import { IndexInfoComponent } from './index-info/index-info.component';
+import { FooterComponent } from './footer/footer.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { ProfileComponent } from './profile/profile.component';
+import { ListPageComponent } from './list-page/list-page.component';
+
 
 @NgModule({
   declarations: [
@@ -51,7 +53,8 @@ import { FirebaseRequestsService } from '../services/firebase.requests.service';
     FooterComponent,
     LoginComponent,
     RegisterComponent,
-    ProfileComponent
+    ProfileComponent,
+    ListPageComponent
   ],
   imports: [
     BrowserModule,

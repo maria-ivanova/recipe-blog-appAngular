@@ -1,0 +1,13 @@
+<!-- BANNER -->
+<section class="sec banner_sec">
+    <div class="banner_item inner_banner_item">
+        <h2 class="title">{{categoryName}}</h2>
+    </div>
+</section>
+
+<!-- ITEMS LIST -->
+<section class="sec content_sec">
+    <div class="container">
+        <app-items-list [filerCriterion]="'category'" [secondFilterCriterion]=categoryName></app-items-list>
+    </div>
+</section>
