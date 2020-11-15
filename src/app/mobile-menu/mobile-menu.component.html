@@ -8,26 +8,18 @@
     </button>
 
     <nav>
-        <ul *ngIf="!isLogged">
-            <li><a href="/">Начало</a></li>
-            <li><a href="/recipes/Салати">Салати</a></li>
-            <li><a href="/recipes/Супи">Супи</a></li>
-            <li><a href="/recipes/Основни ястия">Основни ястия</a></li>
-            <li><a href="/recipes/Десерти">Десерти</a></li>
-            <li><a href="/login">Вход</a></li>
-            <li><a href="/register">Регистрация</a></li>
-        </ul>
+        <ul>
+            <li><a routerLink="{{ROUTES.HOME}}">Начало</a></li>
+            <li *ngFor="let category of allCategories"><a routerLink="/{{ROUTES.RECIPES}}/{{category}}">{{category}}</a></li>
 
-        <ul *ngIf="isLogged">
-            <li><a href="/">Начало</a></li>
-            <li><a href="/recipes/Салати">Салати</a></li>
-            <li><a href="/recipes/Супи">Супи</a></li>
-            <li><a href="/recipes/Основни ястия">Основни ястия</a></li>
-            <li><a href="/recipes/Десерти">Десерти</a></li>
-            <li><a href="/create">Създай рецепта</a></li>
-            <li><a href="/myRecipes">Моите рецепти</a></li>
-            <li><a href="/myFavorites">Любими рецепти</a></li>
-            <li><a href="/profile">Профил</a></li>
-            <li><span>Изход</span></li></ul>
+            <li *ngIf="!loggedUser"><a routerLink="{{ROUTES.LOGIN}}">Вход</a></li>
+            <li *ngIf="!loggedUser"><a routerLink="{{ROUTES.REGISTER}}">Регистрация</a></li>
+
+            <li *ngIf="loggedUser"><a routerLink="{{ROUTES.CREATE}}">Създай рецепта</a></li>
+            <li *ngIf="loggedUser"><a routerLink="{{ROUTES.MY_RECIPES}}">Моите рецепти</a></li>
+            <li *ngIf="loggedUser"><a routerLink="{{ROUTES.FAVORITES_RECIPES}}">Любими рецепти</a></li>
+            <li *ngIf="loggedUser"><a routerLink="{{ROUTES.PROFILE}}">Профил</a></li>
+            <li *ngIf="loggedUser"><span (click)="logout()">Изход</span></li>
+        </ul>  
     </nav>
 </div>
