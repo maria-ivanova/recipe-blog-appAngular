@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { firebaseErrors, customErrors } from '../../constants/errors';
 
 import { UserAuthService } from '../../services/firebase.auth.service';
-import { RegisterModel } from '../../models/register.model';
+import { IRegister } from '../../interfaces/register.interface';
 import ROUTES from '../../constants/routes';
 
 @Component({
@@ -14,36 +14,36 @@ import ROUTES from '../../constants/routes';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-registerForm = new FormGroup({
-  'username': new FormControl('', [Validators.required]),
-  'email': new FormControl('', [Validators.required, Validators.email]),
-  'password': new FormControl('', [Validators.required, Validators.minLength(6)]),
-  'rePassword': new FormControl('')
-})
+  registerForm = new FormGroup({
+    'username': new FormControl('', [Validators.required]),
+    'email': new FormControl('', [Validators.required, Validators.email]),
+    'password': new FormControl('', [Validators.required, Validators.minLength(6)]),
+    'rePassword': new FormControl('')
+  })
 
-customErrors = customErrors;
-model: RegisterModel;
-errorMsg: string = '';
+  customErrors = customErrors;
+  user: IRegister;
+  errorMsg: string = '';
 
-  constructor(public userAuthService: UserAuthService, private router: Router ) { }
+  constructor(public userAuthService: UserAuthService, private router: Router) { }
 
   register() {
-    this.model = this.registerForm.value;
+    this.user = this.registerForm.value;
 
-    if(this.model.username === '' || this.model.email === '' || this.model.password === '' || this.model.rePassword === '') {
+    if (this.user.username === '' || this.user.email === '' || this.user.password === '' || this.user.rePassword === '') {
       this.errorMsg = customErrors['requiredFields'];
       return;
     }
 
-    if(this.model.password !== this.model.rePassword) {
+    if (this.user.password !== this.user.rePassword) {
       this.errorMsg = customErrors['matchingPasswords'];
       return;
     }
 
-    this.userAuthService.registerUser(this.model.email, this.model.password)
+    this.userAuthService.registerUser(this.user.email, this.user.password)
       .then(response => {
         response.user.updateProfile({
-          displayName: this.model.username
+          displayName: this.user.username
         })
 
         this.router.navigate([ROUTES.HOME]);
@@ -52,7 +52,7 @@ errorMsg: string = '';
         this.errorMsg = firebaseErrors[err.code] || customErrors['failedRegister'];
       });
   }
-  
+
   get getFormControls() {
     return this.registerForm.controls;
   }

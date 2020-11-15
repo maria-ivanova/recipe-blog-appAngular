@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { firebaseErrors, customErrors } from '../../constants/errors';
 
 import { UserAuthService } from '../../services/firebase.auth.service';
-import { LoginModel } from '../../models/login.model';
+import { ILogin } from '../../interfaces/login.interface';
 import ROUTES from '../../constants/routes';
 
 @Component({
@@ -19,24 +19,25 @@ export class LoginComponent implements OnInit {
     'password': new FormControl('', [Validators.required]),
   })
 
+  ROUTES = ROUTES;
   customErrors = customErrors;
-  model: LoginModel;
+  user: ILogin;
   errorMsg: string = '';
 
 
   constructor(public userAuthService: UserAuthService, private router: Router) { }
 
   login() {
-    this.model = this.loginForm.value;
+    this.user = this.loginForm.value;
 
-    if(this.model.email === '' || this.model.password === '') {
+    if(this.user.email === '' || this.user.password === '') {
       this.errorMsg = customErrors['requiredFields'];
       return;
     }
 
-    this.userAuthService.loginUser(this.model.email, this.model.password)
+    this.userAuthService.loginUser(this.user.email, this.user.password)
       .then(response => {
-        this.router.navigate([ROUTES.PROFILE]);
+        this.router.navigate([ROUTES.HOME]);
       })
       .catch(err => {
         this.errorMsg = customErrors['wrongUserPassword']

@@ -1,29 +1,29 @@
-<a href="" class="item_img">
-    <img src="assets/images/1.jpg" alt="Ризото с тиква">
+<a routerLink="{{ROUTES.DETAILS}}/{{item.id}}" class="item_img">
+    <img src="{{item.imageUrl}}" alt="{{item.title}}">
 </a>
 
 <div class="item_details">
-    <a href="" class="title">
-        Ризото с тиква
+    <a routerLink="{{ROUTES.DETAILS}}/{{item.id}}" class="title">
+        {{item.title}}
     </a>
 
     <div class="date">
-        01 Юли 2020
+       {{item.createdDate | date:'dd/MM/yyyy'}}
     </div>
 
     <div class="short_content">
-        Не само уникално апетитно на вид, но и истински вкусно!...
+        {{item.recipeDescription.substr(0, 50)}}...
     </div>
 
     <div class="item_meta">
         <span class="cell posted_by">
             <fa-icon icon="user" class="fa"></fa-icon>
-            <span>admin</span>
+            <span>{{item.creatorName}}</span>
         </span>
 
         <span class="cell post_likes">
             <fa-icon icon="heart" class="fa"></fa-icon>
-            <span>0</span>
+            <span>{{item.likes}}</span>
         </span>
     </div>
 </div>

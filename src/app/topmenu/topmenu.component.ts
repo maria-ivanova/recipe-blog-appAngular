@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { FirebaseRequestsService } from '../../services/firebase.requests.service';
+import ROUTES from '../../constants/routes';
 
 @Component({
   selector: 'app-topmenu',
@@ -8,7 +9,8 @@ import { FirebaseRequestsService } from '../../services/firebase.requests.servic
   styleUrls: ['./topmenu.component.css']
 })
 export class TopmenuComponent implements OnInit {
-  allCategories: any;
+  allCategories: string[];
+  ROUTES = ROUTES;
 
   constructor(public firebaseRequestsService: FirebaseRequestsService) {
   }

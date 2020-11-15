@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+
+import { FirebaseRequestsService } from '../../services/firebase.requests.service';
+import { IRecipe } from '../../interfaces/recipe.interface';
 
 @Component({
   selector: 'app-items-list',
@@ -6,10 +9,33 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./items-list.component.css']
 })
 export class ItemsListComponent implements OnInit {
+  @Input() sortCriterion: string;
+  @Input() maxElements: number;
+  itemsList: IRecipe[];
 
-  constructor() { }
+  constructor(public firebaseRequestsService: FirebaseRequestsService) { }
+
+  getAllItems() {
+    this.firebaseRequestsService.getData().subscribe(data => {
+      this.itemsList = Object.keys(data).map(key => {
+        return {
+          id: key,
+          ...data[key]
+        }
+      })
+
+      if (this.sortCriterion) {
+        this.itemsList = this.itemsList.sort((a, b) => b[this.sortCriterion] - a[this.sortCriterion]);
+      }
+
+      if(this.maxElements) {
+        this.itemsList = this.itemsList.slice(0, this.maxElements)
+      }
+    })
+  }
 
   ngOnInit(): void {
+    this.getAllItems();
   }
 
 }

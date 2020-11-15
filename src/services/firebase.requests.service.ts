@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
 import { databaseURL, recipeDB, categoriesDB } from "../constants/db.js";
+import { IRecipe } from '../interfaces/recipe.interface';
 
 @Injectable()
 export class FirebaseRequestsService {
@@ -26,8 +29,8 @@ export class FirebaseRequestsService {
         return fetch(`${databaseURL}/${recipeDB}/${id}.json`);
     }
     
-    getData() {
-        return fetch(`${databaseURL}/${recipeDB}.json`).then(response => response.json())
+    getData(): Observable<IRecipe[]> {
+        return this.httpClient.get<IRecipe[]>(`${databaseURL}/${recipeDB}.json`);
     }
     
     getCategories() {

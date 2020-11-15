@@ -8,7 +8,7 @@
             </span>
         </h2>
 
-        <app-items-list></app-items-list>
+        <app-items-list [sortCriterion]="'createdDate'" [maxElements]="8"></app-items-list>
     </div>
 </section>
 
@@ -22,7 +22,7 @@
             </span>
         </h2>
 
-        <app-items-list></app-items-list>
+        <app-items-list [sortCriterion]="'likes'" [maxElements]="8"></app-items-list>
     </div>
 </section>
 

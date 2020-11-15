@@ -10,15 +10,19 @@ import ROUTES from '../../constants/routes';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  ROUTES = ROUTES;
 
   constructor(public userAuthService: UserAuthService, private router: Router ) { }
+
+  get loggedUser() {
+    return this.userAuthService.user;
+  }
 
   logout() {
     this.userAuthService.logoutUser();
     this.router.navigate([ROUTES.HOME]);
   }
   
-
   ngOnInit(): void {
   }
 

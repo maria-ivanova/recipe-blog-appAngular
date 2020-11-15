@@ -1,7 +1,4 @@
 <div class="items_list">
-    <app-single-item class="item"></app-single-item>
-    <app-single-item class="item"></app-single-item>
-    <app-single-item class="item"></app-single-item>
-    <app-single-item class="item"></app-single-item>
+    <app-single-item class="item" *ngFor="let item of itemsList" [item]="item"></app-single-item>
 </div>
 

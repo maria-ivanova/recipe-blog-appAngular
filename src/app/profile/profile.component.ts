@@ -27,6 +27,10 @@ export class ProfileComponent implements OnInit {
   constructor(public userAuthService: UserAuthService, private router: Router, private toastr: ToastrService) {
   }
 
+  get loggedUser() {
+    return this.userAuthService.user;
+  }
+
   updateUser() {
     this.currentUser = this.profileForm.value;
 

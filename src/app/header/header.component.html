@@ -5,22 +5,22 @@
         <app-mobile-menu></app-mobile-menu>
 
         <div class="header_right">
-            <ul *ngIf="!userAuthService.user" class="menu">
-                <li><a  routerLink="/login">Вход</a></li>
+            <ul *ngIf="!loggedUser" class="menu">
+                <li><a  routerLink="{{ROUTES.LOGIN}}">Вход</a></li>
 
-                <li><a routerLink="/register">Регистрация</a></li>
+                <li><a routerLink="{{ROUTES.REGISTER}}">Регистрация</a></li>
             </ul>
             
-            <ul *ngIf="userAuthService.user" class="menu">
+            <ul *ngIf="loggedUser" class="menu">
                 <li class="">
-                    <span>{{userAuthService.user.email}} <fa-icon icon="chevron-down"></fa-icon></span>
+                    <span>{{loggedUser.email}} <fa-icon icon="chevron-down"></fa-icon></span>
 
                     <ul class="submenu">
                         <li><a href="">Създай рецепта</a></li>
 
                         <li><a href="">Моите рецепти</a></li>
 
-                        <li><a routerLink="/profile">Профил</a></li>
+                        <li><a routerLink="{{ROUTES.PROFILE}}">Профил</a></li>
                     </ul>
                 </li>
 
