@@ -35,6 +35,8 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ListPageComponent } from './list-page/list-page.component';
+import { DetailsComponent } from './details/details.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 @NgModule({
@@ -54,7 +56,9 @@ import { ListPageComponent } from './list-page/list-page.component';
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
-    ListPageComponent
+    ListPageComponent,
+    DetailsComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

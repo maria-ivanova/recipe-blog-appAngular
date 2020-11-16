@@ -14,6 +14,7 @@ export class ListPageComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.categoryName = params.category;
+      console.log(this.categoryName)
     })
   }
 

@@ -1,0 +1,100 @@
+<!-- BANNER -->
+<section class="sec banner_sec">
+    <div class="banner_item inner_banner_item">
+        <h2 class="title">{{currentItem?.category}}</h2>
+    </div>
+</section>
+
+<!-- ITEM INFO -->
+<section class="sec content_sec">
+    <div class="container">
+        <div class="item_layout">
+            <div class="left_part">
+                <div class="img_box">
+                    <img src="{{currentItem?.imageUrl}}">
+                </div>
+
+                <div class="features">
+                    <div class="features_item">
+                        <span class="icon">
+                            <img src="assets/images/i_book.svg">
+                        </span>
+
+                        <div class="info">
+                            <span class="title">Категория</span><br>
+                            <span>{{currentItem?.category}}</span>
+                        </div>
+                    </div>
+
+                    <div class="features_item">
+                        <span class="icon">
+                            <img src="assets/images/i_alarm.svg">
+                        </span>
+
+                        <div class="info">
+                            <span class="title">Време за приготвяне</span><br>
+                            <span>{{currentItem?.totalTime}}</span>
+                        </div>
+                    </div>
+
+                    <div class="features_item">
+                        <span class="icon">
+                            <img src="assets/images/i_dish.svg">
+                        </span>
+
+                        <div class="info">
+                            <span class="title">Порции</span><br>
+                            <span>{{currentItem?.yields}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right_part">
+                <h2 class="page_title">
+                    {{currentItem?.title}}
+                </h2>
+
+                <div class="">
+                    <h3 class="inner_title">Необходими съставки:</h3>
+                    <div class="row">
+                        {{currentItem?.ingredients}}
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="description">
+                <h3 class="inner_title">Начин на приготвяне:</h3>
+                <div class="row">
+                    {{currentItem?.recipeDescription}}
+                </div>
+            </div>
+
+            <div class="item_meta">
+                <div class="fleft">
+                    Публикувано от <span>{{currentItem?.creatorName}}</span> на
+                    <span>{{currentItem?.createdDate | date:'dd/MM/yyyy'}}</span>
+                </div>
+
+                <div *ngIf="loggedUser">
+                    <a *ngIf="isCreator(loggedUser?.uid); else elseBlock" routerLink="{{ROUTES.EDIT}}/{{itemId}}" class="btn">
+                        <fa-icon icon="edit" class="fa"></fa-icon> Редактирай
+                    </a>
+
+                    <ng-template #elseBlock>
+                        <span *ngIf="isLiked(loggedUser?.uid); else elseBlock" class="favorites_info">
+                            <fa-icon icon="heart" class="fa"></fa-icon> Добавена в любими
+                        </span>
+
+                        <ng-template #elseBlock>
+                            <button class="btn" (click)="likesHandler()">
+                                <fa-icon icon="heart" class="fa"></fa-icon> Добави в любими
+                            </button>
+                        </ng-template>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

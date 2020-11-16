@@ -5,6 +5,11 @@ import { Observable } from 'rxjs';
 import { databaseURL, recipeDB, categoriesDB } from "../constants/db.js";
 import { IRecipe } from '../interfaces/recipe.interface';
 
+const httpOptions = {
+    method: 'PUT',
+    headers: { 'Content-type': 'application/json' },
+}
+
 @Injectable()
 export class FirebaseRequestsService {
     constructor(private httpClient: HttpClient){}
@@ -17,16 +22,12 @@ export class FirebaseRequestsService {
         })
     };
     
-    postEdit(id, data)  {
-        return fetch(`${databaseURL}/${recipeDB}/${id}.json`, {
-            method: 'PUT',
-            headers: { 'Content-type': 'application/json' },
-            body: JSON.stringify(data)
-        })
+    postEdit(itemId: string, data: IRecipe): Observable<IRecipe> {
+        return this.httpClient.put<IRecipe>(`${databaseURL}/${recipeDB}/${itemId}.json`, data, httpOptions)
     }
     
-    getItemInfo(id) {
-        return fetch(`${databaseURL}/${recipeDB}/${id}.json`);
+    getItemInfo(id: string): Observable<IRecipe> {
+        return this.httpClient.get<IRecipe>(`${databaseURL}/${recipeDB}/${id}.json`);
     }
     
     getData(): Observable<IRecipe[]> {
