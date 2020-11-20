@@ -17,4 +17,10 @@ export const customErrors = {
     'requiredFields': 'Попълнете всички полета!',
     'wrongUserPassword': 'Грешно потребителско име или парола!',
     'failedChangePassword': 'Несупешна промяна на парола!',
+    'requiredField': 'Моля, попълнете полето!',
+    'missingImage': 'Моля, качете снимка!',
+    'failedEdit': 'Неуспешно редактиране на рецепта!',
+    'maxLengthTotalTime': 'Максимална дължина на "Време за приготвяне" 10 символа!',
+    'mustBeInteger': 'Порциите трябва да са цяло число по-голямо от нула!',
+
 }

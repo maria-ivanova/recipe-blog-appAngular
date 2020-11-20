@@ -1,0 +1,148 @@
+<section class="sec content_sec">
+    <div class="container tcenter">
+        <h2 class="page_title">
+            <span>Редактиране на рецепта</span>
+        </h2>
+
+        <h3 class="inner_title">
+               Kъм рецептата <a routerLink="{{ROUTES.DETAILS}}/{{itemId}}" class="title">
+                {{currentItem.title}}
+            </a>
+         </h3>
+
+        <form [formGroup]="editForm" (ngSubmit)="submitHandler()" class="recipe_form">
+            <div *ngIf="errorMsg" class="errorMsg">
+                {{errorMsg}}
+            </div>
+
+            <div class="input_row">
+                <div *ngIf="getFormControls.title.touched && getFormControls.title.errors?.required" class="errorMsg">
+                    {{customErrors.requiredField}}
+                </div>
+
+                <label class="lbl">
+                    Заглавие
+                    <span class="tred">*</span>
+                </label>
+
+                <input type="text" class="input_text" formControlName="title">
+            </div>
+
+            <div class="input_row">
+                <label class="lbl">
+                    Категория
+                    <span class="tred">*</span>
+                </label>
+
+                <select class="input_text" formControlName="category">
+                    <option *ngFor="let category of allCategories" value="{{category}}">{{category}}</option>
+                </select>
+            </div>
+
+            <div class="input_row">
+                <div *ngIf="getFormControls.totalTime.touched && getFormControls.totalTime.errors?.required"
+                    class="errorMsg">
+                    {{customErrors.requiredField}}
+                </div>
+
+                <div *ngIf="getFormControls.totalTime.touched && getFormControls.totalTime.errors?.maxlength"
+                    class="errorMsg">
+                    {{customErrors.maxLengthTotalTime}}
+                </div>
+
+                <label class="lbl">
+                    Време за приготвяне (макс. 10 символа)
+                    <span class="tred">*</span>
+                </label>
+
+                <input type="text" class="input_text" formControlName="totalTime">
+            </div>
+
+            <div class="input_row">
+                <div *ngIf="getFormControls.yields.touched && getFormControls.yields.errors?.required" class="errorMsg">
+                    {{customErrors.requiredField}}
+                </div>
+
+                <div *ngIf="getFormControls.yields.touched && getFormControls.yields.errors?.min" class="errorMsg">
+                    {{customErrors.mustBeInteger}}
+                </div>
+
+                <label class="lbl">
+                    Порции
+                    <span class="tred">*</span>
+                </label>
+
+                <input type="number" class="input_text" formControlName="yields">
+            </div>
+
+            <div class="input_row">
+                <label class="lbl">
+                    Качване на снимка
+                    <span class="tred">*</span>
+                </label>
+
+                <div class="img_holder">
+                    <div *ngIf="currentItem?.imageUrl; then thenBlock else elseBlock"></div>
+
+                    <ng-template #thenBlock>
+                        <div class="img_box">
+                            <img src="{{currentItem?.imageUrl}}" alt="recipe pic">
+                            
+                            <span class="btnDeleteImg" (click)="deleteImage()">
+                                <fa-icon icon="times" class="fa"></fa-icon>
+                            </span>
+                        </div>
+                    </ng-template>
+
+                    <ng-template #elseBlock>
+                        <span *ngIf="imageFile?.name; else elseBlock">
+                            {{imageFile.name}}
+                        </span>
+
+                        <ng-template #elseBlock>
+                            Все още няма качена снимка
+                        </ng-template>
+                    </ng-template>
+                </div>
+
+                <label *ngIf="!currentItem?.imageUrl" class="upload_btn btn">
+                    <input type="file" (change)="imageHandler($event)">
+                    <fa-icon icon="upload" class="fa"></fa-icon>
+                    качи
+                </label>
+            </div>
+
+            <div class="input_row">
+                <div *ngIf="getFormControls.ingredients.touched && getFormControls.ingredients.errors?.required"
+                    class="errorMsg">
+                    {{customErrors.requiredField}}
+                </div>
+
+                <label class="lbl">
+                    Необходими съставки
+                    <span class="tred">*</span>
+                </label>
+
+                <textarea class="input_text" formControlName="ingredients"></textarea>
+            </div>
+
+            <div class="input_row">
+                <div *ngIf="getFormControls.recipeDescription.touched && getFormControls.recipeDescription.errors?.required"
+                    class="errorMsg">
+                    {{customErrors.requiredField}}
+                </div>
+
+                <label class="lbl">
+                    Начин на приготвяне
+                    <span class="tred">*</span>
+                </label>
+
+                <textarea class="input_text" formControlName="recipeDescription"></textarea>
+            </div>
+
+            <div class="input_row">
+                <button type="submit" value="create" class="btn">Редактирай</button>
+            </div>
+        </form>
+    </div>
+</section>

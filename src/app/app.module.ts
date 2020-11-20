@@ -15,6 +15,7 @@ import { faChevronDown, faUser, faHeart, faUpload, faTimes, faEdit, faBars } fro
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 import { environment } from '../environments/environment';
 
 import { UserAuthService } from '../services/firebase.auth.service';
@@ -36,7 +37,9 @@ import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ListPageComponent } from './list-page/list-page.component';
 import { DetailsComponent } from './details/details.component';
+import { EditComponent } from './edit/edit.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+
 
 
 @NgModule({
@@ -58,7 +61,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     ProfileComponent,
     ListPageComponent,
     DetailsComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,
@@ -69,6 +73,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
+    AngularFireStorageModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
   ],

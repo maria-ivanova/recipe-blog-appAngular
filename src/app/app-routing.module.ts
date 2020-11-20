@@ -7,16 +7,18 @@ import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ListPageComponent } from './list-page/list-page.component';
 import { DetailsComponent } from './details/details.component';
+import { EditComponent } from './edit/edit.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent },
-  { path: 'recipes/:category', component:  ListPageComponent},
-  { path: 'details/:id', component:  DetailsComponent},
-  { path: 'notFound', component:  NotFoundComponent},
-  { path: '', component: HomeComponent }
+  { path: 'recipes/:category', component:  ListPageComponent },
+  { path: 'details/:id', component:  DetailsComponent },
+  { path: 'edit/:id', component:  EditComponent },
+  { path: '', pathMatch: 'full', component: HomeComponent },
+  { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({
