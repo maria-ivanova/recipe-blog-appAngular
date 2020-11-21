@@ -40,6 +40,8 @@ import { DetailsComponent } from './details/details.component';
 import { EditComponent } from './edit/edit.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { CreateComponent } from './create/create.component';
+import { MyItemsComponent } from './my-items/my-items.component';
+import { MySingleItemComponent } from './my-single-item/my-single-item.component';
 
 
 
@@ -64,7 +66,9 @@ import { CreateComponent } from './create/create.component';
     DetailsComponent,
     NotFoundComponent,
     EditComponent,
-    CreateComponent
+    CreateComponent,
+    MyItemsComponent,
+    MySingleItemComponent
   ],
   imports: [
     BrowserModule,

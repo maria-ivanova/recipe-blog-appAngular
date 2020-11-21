@@ -15,6 +15,11 @@ const httpOptionsPost = {
     headers: { 'Content-type': 'application/json' },
 }
 
+const httpOptionsDelete = {
+    method: 'DELETE',
+    headers: { 'Content-type': 'application/json' },
+}
+
 const { databaseURL, recipeDB, categoriesDB } = environment.db;
 
 @Injectable()
@@ -38,12 +43,10 @@ export class FirebaseRequestsService {
     }
     
     getCategories() {
-        return this.httpClient.get(`${databaseURL}/${categoriesDB}.json`)
+        return this.httpClient.get(`${databaseURL}/${categoriesDB}.json`);
     }
     
-    deleteItem(id) {
-        return fetch(`${databaseURL}/${recipeDB}/${id}.json`, {
-            method: 'DELETE'
-        })
+    deleteItem(id): Observable<{}> {
+        return this.httpClient.delete(`${databaseURL}/${recipeDB}/${id}.json`, httpOptionsDelete);
     }
 }

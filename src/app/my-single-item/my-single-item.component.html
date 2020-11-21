@@ -1,0 +1,34 @@
+<a [routerLink]="[ROUTES.DETAILS, item.id]" class="item_img">
+    <img [src]="item.imageUrl" [alt]="item.title">
+</a>
+
+<div class="item_details">
+    <a [routerLink]="[ROUTES.DETAILS, item.id]" class="title">
+        {{item.title}}
+    </a>
+
+    <div class="date">
+        {{item.createdDate | date:'dd/MM/yyyy'}}
+    </div>
+
+    <div class="short_content">
+        {{item.recipeDescription.substr(0, 50)}}...
+    </div>
+
+    <div class="item_meta">
+        <span class="cell posted_by">
+            <fa-icon icon="user" class="fa"></fa-icon>
+            <span>{{item.creatorName}}</span>
+        </span>
+
+        <span class="cell post_likes">
+            <fa-icon icon="heart" class="fa"></fa-icon>
+            <span>{{item.likes}}</span>
+        </span>
+    </div>
+
+    <div class="btns_box">
+        <a [routerLink]="[ROUTES.EDIT, item.id]" class="btn">Редактирай</a>
+        <button type="button" (click)="deleteItem(item.id)" class="btn btn_del">Изтрий</button>
+    </div>
+</div>

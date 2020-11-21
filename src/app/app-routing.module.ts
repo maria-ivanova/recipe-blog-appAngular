@@ -10,6 +10,7 @@ import { DetailsComponent } from './details/details.component';
 import { EditComponent } from './edit/edit.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { CreateComponent } from './create/create.component';
+import { MyItemsComponent } from './my-items/my-items.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'details/:id', component:  DetailsComponent },
   { path: 'edit/:id', component:  EditComponent },
   { path: 'create', component: CreateComponent },
+  { path: 'myRecipes', component: MyItemsComponent },
   { path: '', pathMatch: 'full', component: HomeComponent },
   { path: '**', component: NotFoundComponent },
 ];
