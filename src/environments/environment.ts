@@ -12,6 +12,12 @@ export const environment = {
     storageBucket: "recipe-blog-e52f2.appspot.com",
     messagingSenderId: "441320101691",
     appId: "1:441320101691:web:5a3d23872a331330e6091e"
+  },
+  db: {
+    databaseURL: "https://recipe-blog-e52f2.firebaseio.com",
+    usersDB: 'users',
+    recipeDB: 'recipes',
+    categoriesDB:'categories'
   }
 };
 

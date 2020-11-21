@@ -23,7 +23,7 @@ export class EditComponent implements OnInit {
   allCategories: string[];
   ROUTES = ROUTES;
   customErrors = customErrors;
-  imageFile: any;
+  imageFile: File;
   errorMsg: string = '';
 
   editForm = new FormGroup({
@@ -93,7 +93,7 @@ imageHandler(event) {
       this.toastr.success('Успешно редактиране на рецепта!');
       this.errorMsg = '';
     }, error => {
-      this.errorMsg = customErrors['failedEdit'];
+      this.errorMsg = customErrors['failedCreate'];
     })
   }
 

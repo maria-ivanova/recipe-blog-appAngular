@@ -1,16 +1,10 @@
 <section class="sec content_sec">
     <div class="container tcenter">
         <h2 class="page_title">
-            <span>Редактиране на рецепта</span>
+            <span>Създай рецепта</span>
         </h2>
 
-        <h3 class="inner_title">
-               Kъм рецептата <a routerLink="{{ROUTES.DETAILS}}/{{itemId}}" class="title">
-                {{currentItem.title}}
-            </a>
-         </h3>
-
-        <form [formGroup]="editForm" (ngSubmit)="submitHandler()" class="recipe_form">
+        <form [formGroup]="createForm" (ngSubmit)="submitHandler()" class="recipe_form">
             <div *ngIf="errorMsg" class="errorMsg">
                 {{errorMsg}}
             </div>
@@ -35,7 +29,9 @@
                 </label>
 
                 <select class="input_text" formControlName="category">
-                    <option *ngFor="let category of allCategories" [value]="category">{{category}}</option>
+                    <option *ngFor="let category of allCategories; let i = index" [value]="category">
+                        {{category}}
+                    </option>
                 </select>
             </div>
 
@@ -51,7 +47,7 @@
                 </div>
 
                 <label class="lbl">
-                    Време за приготвяне (макс. 10 символа)
+                     Време за приготвяне (макс. 10 символа)
                     <span class="tred">*</span>
                 </label>
 
@@ -66,7 +62,7 @@
                 <div *ngIf="getFormControls.yields.touched && getFormControls.yields.errors?.min" class="errorMsg">
                     {{customErrors.mustBeInteger}}
                 </div>
-
+                
                 <label class="lbl">
                     Порции
                     <span class="tred">*</span>
@@ -82,30 +78,16 @@
                 </label>
 
                 <div class="img_holder">
-                    <div *ngIf="currentItem?.imageUrl; then thenBlock else elseBlock"></div>
-
-                    <ng-template #thenBlock>
-                        <div class="img_box">
-                            <img src="{{currentItem?.imageUrl}}" alt="recipe pic">
-                            
-                            <span class="btnDeleteImg" (click)="deleteImage()">
-                                <fa-icon icon="times" class="fa"></fa-icon>
-                            </span>
-                        </div>
-                    </ng-template>
+                    <span *ngIf="imageFile?.name; else elseBlock" >
+                        {{imageFile.name}}
+                    </span>
 
                     <ng-template #elseBlock>
-                        <span *ngIf="imageFile?.name; else elseBlock">
-                            {{imageFile.name}}
-                        </span>
-
-                        <ng-template #elseBlock>
-                            Все още няма качена снимка
-                        </ng-template>
+                        Все още няма качена снимка
                     </ng-template>
                 </div>
 
-                <label *ngIf="!currentItem?.imageUrl" class="upload_btn btn">
+                <label class="upload_btn btn">
                     <input type="file" (change)="imageHandler($event)">
                     <fa-icon icon="upload" class="fa"></fa-icon>
                     качи
@@ -139,9 +121,8 @@
 
                 <textarea class="input_text" formControlName="recipeDescription"></textarea>
             </div>
-
             <div class="input_row">
-                <button type="submit" class="btn">Редактирай</button>
+                <button type="submit" class="btn">Създай</button>
             </div>
         </form>
     </div>

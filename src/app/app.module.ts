@@ -39,6 +39,7 @@ import { ListPageComponent } from './list-page/list-page.component';
 import { DetailsComponent } from './details/details.component';
 import { EditComponent } from './edit/edit.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { CreateComponent } from './create/create.component';
 
 
 
@@ -62,7 +63,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     ListPageComponent,
     DetailsComponent,
     NotFoundComponent,
-    EditComponent
+    EditComponent,
+    CreateComponent
   ],
   imports: [
     BrowserModule,

@@ -9,6 +9,7 @@ import { ListPageComponent } from './list-page/list-page.component';
 import { DetailsComponent } from './details/details.component';
 import { EditComponent } from './edit/edit.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { CreateComponent } from './create/create.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'recipes/:category', component:  ListPageComponent },
   { path: 'details/:id', component:  DetailsComponent },
   { path: 'edit/:id', component:  EditComponent },
+  { path: 'create', component: CreateComponent },
   { path: '', pathMatch: 'full', component: HomeComponent },
   { path: '**', component: NotFoundComponent },
 ];

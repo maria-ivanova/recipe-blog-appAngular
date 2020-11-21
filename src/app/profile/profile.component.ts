@@ -25,6 +25,7 @@ export class ProfileComponent implements OnInit {
   currentUser: any;
 
   constructor(public userAuthService: UserAuthService, private router: Router, private toastr: ToastrService) {
+    console.log(this.userAuthService.user)
   }
 
   get loggedUser() {
