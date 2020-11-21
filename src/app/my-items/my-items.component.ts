@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { UserAuthService } from '../../services/firebase.auth.service';
 import { FirebaseRequestsService } from '../../services/firebase.requests.service';
 import { IRecipe } from '../../interfaces/recipe.interface';
+import ROUTES from '../../constants/routes';
 
 @Component({
   selector: 'app-my-items',
@@ -13,6 +14,7 @@ import { IRecipe } from '../../interfaces/recipe.interface';
 export class MyItemsComponent implements OnInit {
   itemsList: IRecipe[];
   currentUser: any;
+  ROUTES = ROUTES;
 
   constructor(
     public userAuthService: UserAuthService,

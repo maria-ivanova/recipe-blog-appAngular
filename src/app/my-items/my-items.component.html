@@ -9,7 +9,23 @@
 <section class="sec content_sec">
     <div class="container">
         <div class="items_list my_list">
-            <app-my-single-item class="item" *ngFor="let item of itemsList" [item]="item" (handleDelete)="deleteHandle($event)"></app-my-single-item>
+            <div *ngIf="itemsList?.length !== 0; then thenBlock else elseBlock"></div>
+
+            <ng-template #thenBlock>
+                <app-my-single-item class="item" *ngFor="let item of itemsList" [item]="item" (handleDelete)="deleteHandle($event)"></app-my-single-item>
+            </ng-template>
+
+            <ng-template #elseBlock>
+                <div class="inner_text">
+                    <h3>
+                        Все още нямате създадени рецепти!
+                    </h3>
+
+                    <a [routerLink]="[ROUTES.CREATE]" class="btn">
+                        Създай рецепта
+                    </a>
+                </div>
+            </ng-template>
         </div>
     </div>
 </section>
