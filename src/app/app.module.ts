@@ -20,6 +20,7 @@ import { environment } from '../environments/environment';
 
 import { UserAuthService } from '../services/firebase.auth.service';
 import { FirebaseRequestsService } from '../services/firebase.requests.service';
+import { SearchstateService } from '../services/search.state.service';
 
 import { HeaderComponent } from './header/header.component';
 import { LogoComponent } from './logo/logo.component';
@@ -43,6 +44,7 @@ import { CreateComponent } from './create/create.component';
 import { MyItemsComponent } from './my-items/my-items.component';
 import { MySingleItemComponent } from './my-single-item/my-single-item.component';
 import { FavoritesComponent } from './favorites/favorites.component';
+import { SearchPageComponent } from './search-page/search-page.component';
 
 
 
@@ -70,7 +72,8 @@ import { FavoritesComponent } from './favorites/favorites.component';
     CreateComponent,
     MyItemsComponent,
     MySingleItemComponent,
-    FavoritesComponent
+    FavoritesComponent,
+    SearchPageComponent
   ],
   imports: [
     BrowserModule,
@@ -85,7 +88,7 @@ import { FavoritesComponent } from './favorites/favorites.component';
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
   ],
-  providers: [UserAuthService, FirebaseRequestsService],
+  providers: [UserAuthService, FirebaseRequestsService, SearchstateService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

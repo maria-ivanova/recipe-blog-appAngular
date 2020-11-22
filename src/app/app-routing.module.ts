@@ -12,6 +12,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { CreateComponent } from './create/create.component';
 import { MyItemsComponent } from './my-items/my-items.component';
 import { FavoritesComponent } from './favorites/favorites.component';
+import { SearchPageComponent } from './search-page/search-page.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'create', component: CreateComponent },
   { path: 'myRecipes', component: MyItemsComponent },
   { path: 'myFavorites', component: FavoritesComponent },
+  { path: 'search', component: SearchPageComponent },
   { path: '', pathMatch: 'full', component: HomeComponent },
   { path: '**', component: NotFoundComponent },
 ];

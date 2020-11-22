@@ -1,0 +1,11 @@
+<section class="sec content_sec">
+    <div class="container">
+        <h2 class="page_title">
+            <span>Резултат от търсенето</span>
+        </h2>
+
+        <div class="items_list" *ngIf="itemsList?.length !== 0;">
+            <app-single-item class="item" *ngFor="let item of itemsList" [item]="item"></app-single-item>
+        </div>
+    </div>
+</section>
