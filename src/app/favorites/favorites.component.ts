@@ -3,17 +3,15 @@ import { Component, OnInit } from '@angular/core';
 import { UserAuthService } from '../../services/firebase.auth.service';
 import { FirebaseRequestsService } from '../../services/firebase.requests.service';
 import { IRecipe } from '../../interfaces/recipe.interface';
-import ROUTES from '../../constants/routes';
 
 @Component({
-  selector: 'app-my-items',
-  templateUrl: './my-items.component.html',
-  styleUrls: ['./my-items.component.css']
+  selector: 'app-favorites',
+  templateUrl: './favorites.component.html',
+  styleUrls: ['./favorites.component.css']
 })
-export class MyItemsComponent implements OnInit {
+export class FavoritesComponent implements OnInit {
   itemsList: IRecipe[];
   currentUser: any;
-  ROUTES = ROUTES;
 
   constructor(
     public userAuthService: UserAuthService,
@@ -33,19 +31,15 @@ export class MyItemsComponent implements OnInit {
               ...data[key]
             }
           })
-          .filter(el => el['creatorId'] === this.currentUser.uid)
-          .sort((a, b) => b['createdDate'] - a['createdDate']);
+          .filter(el => el.likes !== 0)
+          .filter(el => el['likesArr'].includes(this.currentUser.uid));
         }
       })
-     
     })
-  }
-
-  deleteHandle(itemId) {
-    this.itemsList = this.itemsList.filter(el => el.id !== itemId);
   }
 
   ngOnInit(): void {
     this.getAllItems();
   }
+
 }

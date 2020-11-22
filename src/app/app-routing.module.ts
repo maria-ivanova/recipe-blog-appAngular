@@ -11,6 +11,7 @@ import { EditComponent } from './edit/edit.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { CreateComponent } from './create/create.component';
 import { MyItemsComponent } from './my-items/my-items.component';
+import { FavoritesComponent } from './favorites/favorites.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'edit/:id', component:  EditComponent },
   { path: 'create', component: CreateComponent },
   { path: 'myRecipes', component: MyItemsComponent },
+  { path: 'myFavorites', component: FavoritesComponent },
   { path: '', pathMatch: 'full', component: HomeComponent },
   { path: '**', component: NotFoundComponent },
 ];

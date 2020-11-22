@@ -42,6 +42,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { CreateComponent } from './create/create.component';
 import { MyItemsComponent } from './my-items/my-items.component';
 import { MySingleItemComponent } from './my-single-item/my-single-item.component';
+import { FavoritesComponent } from './favorites/favorites.component';
 
 
 
@@ -68,7 +69,8 @@ import { MySingleItemComponent } from './my-single-item/my-single-item.component
     EditComponent,
     CreateComponent,
     MyItemsComponent,
-    MySingleItemComponent
+    MySingleItemComponent,
+    FavoritesComponent
   ],
   imports: [
     BrowserModule,
