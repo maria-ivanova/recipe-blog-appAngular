@@ -21,6 +21,7 @@ import { environment } from '../environments/environment';
 import { UserAuthService } from '../services/firebase.auth.service';
 import { FirebaseRequestsService } from '../services/firebase.requests.service';
 import { SearchstateService } from '../services/search.state.service';
+import { IsLoggedIn } from './auth/isLoggedIn';
 
 import { HeaderComponent } from './header/header.component';
 import { LogoComponent } from './logo/logo.component';
@@ -73,7 +74,7 @@ import { SearchPageComponent } from './search-page/search-page.component';
     MyItemsComponent,
     MySingleItemComponent,
     FavoritesComponent,
-    SearchPageComponent
+    SearchPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -88,7 +89,7 @@ import { SearchPageComponent } from './search-page/search-page.component';
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
   ],
-  providers: [UserAuthService, FirebaseRequestsService, SearchstateService],
+  providers: [UserAuthService, FirebaseRequestsService, SearchstateService, IsLoggedIn],
   bootstrap: [AppComponent]
 })
 export class AppModule {

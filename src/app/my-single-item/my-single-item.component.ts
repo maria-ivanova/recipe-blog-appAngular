@@ -20,7 +20,7 @@ export class MySingleItemComponent implements OnInit {
     private toastr: ToastrService ) { }
 
   deleteItem(itemId) {
-    this.firebaseRequestsService.deleteItem(itemId).subscribe(dadat => {
+    this.firebaseRequestsService.deleteItem(itemId).subscribe(data => {
       this.toastr.success('Рецептата беше успeшно изтрита!');
       this.handleDelete.emit(itemId);
       

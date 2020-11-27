@@ -24,12 +24,15 @@ export class ProfileComponent implements OnInit {
   errorMsg: string = '';
   currentUser: any;
 
-  constructor(public userAuthService: UserAuthService, private router: Router, private toastr: ToastrService) {
-    console.log(this.userAuthService.user)
-  }
+  constructor(
+    public userAuthService: UserAuthService,
+    private router: Router,
+    private toastr: ToastrService
+    ) { }
 
-  get loggedUser() {
-    return this.userAuthService.user;
+  setLoggedUserInfo() {
+    this.profileForm.controls.username.setValue(this.userAuthService.user.displayName);
+    this.profileForm.controls.email.setValue(this.userAuthService.user.email);
   }
 
   updateUser() {
@@ -67,6 +70,7 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.setLoggedUserInfo();
   }
 
 }

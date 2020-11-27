@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { AuthGuard } from './auth/auth.guard';
+import { IsLoggedIn } from './auth/isLoggedIn';
+
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
@@ -14,16 +17,17 @@ import { MyItemsComponent } from './my-items/my-items.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { SearchPageComponent } from './search-page/search-page.component';
 
+
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'profile', component: ProfileComponent },
+  { path: 'login', component: LoginComponent, resolve: [ IsLoggedIn ] },
+  { path: 'register', component: RegisterComponent, resolve: [ IsLoggedIn ] },
+  { path: 'profile', component: ProfileComponent, canActivate: [ AuthGuard ] },
   { path: 'recipes/:category', component:  ListPageComponent },
   { path: 'details/:id', component:  DetailsComponent },
-  { path: 'edit/:id', component:  EditComponent },
-  { path: 'create', component: CreateComponent },
-  { path: 'myRecipes', component: MyItemsComponent },
-  { path: 'myFavorites', component: FavoritesComponent },
+  { path: 'edit/:id', component:  EditComponent, canActivate: [ AuthGuard ] },
+  { path: 'create', component: CreateComponent, canActivate: [ AuthGuard ] },
+  { path: 'myRecipes', component: MyItemsComponent, canActivate: [ AuthGuard ] },
+  { path: 'myFavorites', component: FavoritesComponent, canActivate: [ AuthGuard ] },
   { path: 'search', component: SearchPageComponent },
   { path: '', pathMatch: 'full', component: HomeComponent },
   { path: '**', component: NotFoundComponent },

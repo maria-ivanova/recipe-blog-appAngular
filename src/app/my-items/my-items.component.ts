@@ -42,7 +42,7 @@ export class MyItemsComponent implements OnInit {
   }
 
   deleteHandle(itemId) {
-    this.itemsList = this.itemsList.filter(el => el.id !== itemId);
+    this.getAllItems();
   }
 
   ngOnInit(): void {
