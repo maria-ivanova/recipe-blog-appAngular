@@ -78,7 +78,7 @@
                 </div>
 
                 <div *ngIf="loggedUser">
-                    <a *ngIf="isCreator(loggedUser?.uid); else elseBlock" routerLink="{{ROUTES.EDIT}}/{{itemId}}" class="btn">
+                    <a *ngIf="isCreator(loggedUser?.uid); else elseBlock" [routerLink]="[ROUTES.EDIT, itemId]" class="btn">
                         <fa-icon icon="edit" class="fa"></fa-icon> Редактирай
                     </a>
 

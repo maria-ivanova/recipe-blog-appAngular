@@ -18,6 +18,7 @@ import { finalize } from "rxjs/operators";
   styleUrls: ['./edit.component.css']
 })
 export class EditComponent implements OnInit {
+  title: string = 'Редактиране на рецепта';
   itemId: string;
   currentItem: IRecipe;
   allCategories: string[];

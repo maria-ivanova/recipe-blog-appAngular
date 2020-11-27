@@ -9,16 +9,16 @@
 
     <nav>
         <ul>
-            <li><a routerLink="{{ROUTES.HOME}}">Начало</a></li>
-            <li *ngFor="let category of allCategories"><a routerLink="/{{ROUTES.RECIPES}}/{{category}}">{{category}}</a></li>
+            <li><a [routerLink]="[ROUTES.HOME]">Начало</a></li>
+            <li *ngFor="let category of allCategories"><a [routerLink]="[ROUTES.RECIPES, category]">{{category}}</a></li>
 
-            <li *ngIf="!loggedUser"><a routerLink="{{ROUTES.LOGIN}}">Вход</a></li>
-            <li *ngIf="!loggedUser"><a routerLink="{{ROUTES.REGISTER}}">Регистрация</a></li>
+            <li *ngIf="!loggedUser"><a [routerLink]="[ROUTES.LOGIN]">Вход</a></li>
+            <li *ngIf="!loggedUser"><a [routerLink]="[ROUTES.REGISTER]">Регистрация</a></li>
 
-            <li *ngIf="loggedUser"><a routerLink="{{ROUTES.CREATE}}">Създай рецепта</a></li>
-            <li *ngIf="loggedUser"><a routerLink="{{ROUTES.MY_RECIPES}}">Моите рецепти</a></li>
-            <li *ngIf="loggedUser"><a routerLink="{{ROUTES.FAVORITES_RECIPES}}">Любими рецепти</a></li>
-            <li *ngIf="loggedUser"><a routerLink="{{ROUTES.PROFILE}}">Профил</a></li>
+            <li *ngIf="loggedUser"><a [routerLink]="[ROUTES.CREATE]">Създай рецепта</a></li>
+            <li *ngIf="loggedUser"><a [routerLink]="[ROUTES.MY_RECIPES]">Моите рецепти</a></li>
+            <li *ngIf="loggedUser"><a [routerLink]="[ROUTES.FAVORITES_RECIPES]">Любими рецепти</a></li>
+            <li *ngIf="loggedUser"><a [routerLink]="[ROUTES.PROFILE]">Профил</a></li>
             <li *ngIf="loggedUser"><span (click)="logout()">Изход</span></li>
         </ul>  
     </nav>

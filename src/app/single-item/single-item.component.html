@@ -1,9 +1,9 @@
-<a routerLink="{{ROUTES.DETAILS}}/{{item.id}}" class="item_img">
+<a [routerLink]="[ROUTES.DETAILS, item.id]" class="item_img">
     <img src="{{item.imageUrl}}" alt="{{item.title}}">
 </a>
 
 <div class="item_details">
-    <a routerLink="{{ROUTES.DETAILS}}/{{item.id}}" class="title">
+    <a [routerLink]="[ROUTES.DETAILS, item.id]" class="title">
         {{item.title}}
     </a>
 

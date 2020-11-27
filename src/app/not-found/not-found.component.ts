@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./not-found.component.css']
 })
 export class NotFoundComponent implements OnInit {
+title: string = 'Страницата не е намерена';
+innerText: string = 'Съжаляваме, но страницата, която търсите не съществува.';
 
   constructor() { }
 

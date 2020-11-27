@@ -1,7 +1,7 @@
 <section class="sec content_sec">
     <div class="container tcenter">
         <h2 class="page_title">
-            <span>Вход</span>
+            <span>{{title}}</span>
         </h2>
 
         <form [formGroup]="loginForm" (ngSubmit)="login()" class="user_form">
@@ -47,7 +47,7 @@
             </div>
 
             <div className={mainStyles.input_row}>
-                Все още нямаш профил? <a routerLink="{{ROUTES.REGISTER}}">Регистрирай се</a>
+                Все още нямаш профил? <a [routerLink]="[ROUTES.REGISTER]">Регистрирай се</a>
             </div>
         </form>
     </div>

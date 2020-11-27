@@ -11,6 +11,7 @@ import ROUTES from '../../constants/routes';
   styleUrls: ['./my-items.component.css']
 })
 export class MyItemsComponent implements OnInit {
+  title: string = 'Моите рецепти';
   itemsList: IRecipe[];
   currentUser: any;
   ROUTES = ROUTES;

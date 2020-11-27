@@ -1,11 +1,11 @@
 <section class="sec content_sec">
     <div class="container tcenter">
         <h2 class="page_title">
-            <span>Редактиране на рецепта</span>
+            <span>{{title}}</span>
         </h2>
 
         <h3 class="inner_title">
-               Kъм рецептата <a routerLink="{{ROUTES.DETAILS}}/{{itemId}}" class="title">
+               Kъм рецептата <a [routerLink]="[ROUTES.DETAILS, itemId]" class="title">
                 {{currentItem.title}}
             </a>
          </h3>

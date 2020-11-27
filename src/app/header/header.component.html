@@ -6,9 +6,9 @@
 
         <div class="header_right">
             <ul *ngIf="!loggedUser" class="menu">
-                <li><a routerLink="{{ROUTES.LOGIN}}">Вход</a></li>
+                <li><a [routerLink]="[ROUTES.LOGIN]">Вход</a></li>
 
-                <li><a routerLink="{{ROUTES.REGISTER}}">Регистрация</a></li>
+                <li><a [routerLink]="[ROUTES.REGISTER]">Регистрация</a></li>
             </ul>
 
             <ul *ngIf="loggedUser" class="menu">
@@ -16,10 +16,10 @@
                     <span>{{loggedUser.email}} <fa-icon icon="chevron-down"></fa-icon></span>
 
                     <ul class="submenu">
-                        <li><a routerLink="{{ROUTES.CREATE}}">Създай рецепта</a></li>
-                        <li><a routerLink="{{ROUTES.MY_RECIPES}}">Моите рецепти</a></li>
-                        <li><a routerLink="{{ROUTES.FAVORITES_RECIPES}}">Любими рецепти</a></li>
-                        <li><a routerLink="{{ROUTES.PROFILE}}">Профил</a></li>
+                        <li><a [routerLink]="[ROUTES.CREATE]">Създай рецепта</a></li>
+                        <li><a [routerLink]="[ROUTES.MY_RECIPES]">Моите рецепти</a></li>
+                        <li><a [routerLink]="[ROUTES.FAVORITES_RECIPES]">Любими рецепти</a></li>
+                        <li><a [routerLink]="[ROUTES.PROFILE]">Профил</a></li>
                     </ul>
                 </li>
 

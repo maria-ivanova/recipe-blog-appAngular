@@ -17,6 +17,7 @@ import { finalize } from "rxjs/operators";
   styleUrls: ['./create.component.css']
 })
 export class CreateComponent implements OnInit {
+  title: string = 'Създай рецепта';
   allCategories: string[];
   newItem: IRecipe;
   imageUrl: string;
@@ -68,6 +69,8 @@ export class CreateComponent implements OnInit {
     this.newItem.creatorId = this.loggedUser.uid;
     this.newItem.creatorName = this.loggedUser.displayName;
     this.newItem.imageUrl = this.imageUrl;
+    this.newItem.likes = 0;
+    this.newItem.likesArr = [];
 
     this.firebaseRequestsService.postCreate(this.newItem).subscribe(data => {
       this.toastr.success('Успешно създадена рецепта!');

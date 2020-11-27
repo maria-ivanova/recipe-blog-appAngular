@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+
 import { SearchstateService } from '../../services/search.state.service';
+import { IRecipe } from '../../interfaces/recipe.interface';
 
 @Component({
   selector: 'app-search-page',
@@ -7,6 +9,7 @@ import { SearchstateService } from '../../services/search.state.service';
   styleUrls: ['./search-page.component.css']
 })
 export class SearchPageComponent implements OnInit {
+  title: string = 'Резултат от търсенето';
   itemsList: any;
 
   constructor(

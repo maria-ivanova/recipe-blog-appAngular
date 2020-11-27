@@ -10,6 +10,7 @@ import { IRecipe } from '../../interfaces/recipe.interface';
   styleUrls: ['./favorites.component.css']
 })
 export class FavoritesComponent implements OnInit {
+  title: string = 'Любими рецепти';
   itemsList: IRecipe[];
   currentUser: any;
 

@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
     'password': new FormControl('', [Validators.required]),
   })
 
+  title: string = 'Вход';
   ROUTES = ROUTES;
   customErrors = customErrors;
   user: ILogin;
