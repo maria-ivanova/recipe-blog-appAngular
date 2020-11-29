@@ -4,18 +4,18 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './auth/auth.guard';
 import { IsLoggedIn } from './auth/isLoggedIn';
 
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { ProfileComponent } from './profile/profile.component';
-import { ListPageComponent } from './list-page/list-page.component';
-import { DetailsComponent } from './details/details.component';
-import { EditComponent } from './edit/edit.component';
-import { NotFoundComponent } from './not-found/not-found.component';
-import { CreateComponent } from './create/create.component';
-import { MyItemsComponent } from './my-items/my-items.component';
-import { FavoritesComponent } from './favorites/favorites.component';
-import { SearchPageComponent } from './search-page/search-page.component';
+import { HomeComponent } from './core/home/home.component';
+import { LoginComponent } from './user/login/login.component';
+import { RegisterComponent } from './user/register/register.component';
+import { ProfileComponent } from './user/profile/profile.component';
+import { ListPageComponent } from './shared/list-page/list-page.component';
+import { DetailsComponent } from './recipes/details/details.component';
+import { EditComponent } from './recipes/edit/edit.component';
+import { NotFoundComponent } from './core/not-found/not-found.component';
+import { CreateComponent } from './recipes/create/create.component';
+import { MyItemsComponent } from './user-recipes/my-items/my-items.component';
+import { FavoritesComponent } from './user-recipes/favorites/favorites.component';
+import { SearchPageComponent } from './core/search-page/search-page.component';
 
 
 const routes: Routes = [

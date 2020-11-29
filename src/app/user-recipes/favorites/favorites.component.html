@@ -1,0 +1,22 @@
+<section class="sec">
+    <div class="banner_item">
+        <h2 class="title">{{title}}</h2>
+    </div>
+</section>
+
+<section class="sec content_sec">
+    <div class="container">
+
+        <div *ngIf="itemsList?.length !== 0; else elseBlock" class="items_list my_list">
+            <app-single-item class="item" *ngFor="let item of itemsList" [item]="item"></app-single-item>
+        </div>
+
+        <ng-template #elseBlock>
+            <div class="inner_text">
+                <h3>
+                    Все още нямате любими рецепти!
+                </h3>
+            </div>
+        </ng-template>
+    </div>
+</section>

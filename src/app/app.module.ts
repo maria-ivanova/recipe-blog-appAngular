@@ -23,60 +23,21 @@ import { FirebaseRequestsService } from '../services/firebase.requests.service';
 import { SearchstateService } from '../services/search.state.service';
 import { IsLoggedIn } from './auth/isLoggedIn';
 
-import { HeaderComponent } from './header/header.component';
-import { LogoComponent } from './logo/logo.component';
-import { SearchFormComponent } from './search-form/search-form.component';
-import { MobileMenuComponent } from './mobile-menu/mobile-menu.component';
-import { TopmenuComponent } from './topmenu/topmenu.component';
-import { HomeComponent } from './home/home.component';
-import { IndexBannerComponent } from './index-banner/index-banner.component';
-import { ItemsListComponent } from './items-list/items-list.component';
-import { SingleItemComponent } from './single-item/single-item.component';
-import { IndexInfoComponent } from './index-info/index-info.component';
-import { FooterComponent } from './footer/footer.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { ProfileComponent } from './profile/profile.component';
-import { ListPageComponent } from './list-page/list-page.component';
-import { DetailsComponent } from './details/details.component';
-import { EditComponent } from './edit/edit.component';
-import { NotFoundComponent } from './not-found/not-found.component';
-import { CreateComponent } from './create/create.component';
-import { MyItemsComponent } from './my-items/my-items.component';
-import { MySingleItemComponent } from './my-single-item/my-single-item.component';
-import { FavoritesComponent } from './favorites/favorites.component';
-import { SearchPageComponent } from './search-page/search-page.component';
-
+import { CoreModule } from './core/core.module';
+import { UserModule } from './user/user.module';
+import { RecipesModule } from './recipes/recipes.module';
+import { UserRecipesModule  } from './user-recipes/user-recipes.module';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HeaderComponent,
-    LogoComponent,
-    SearchFormComponent,
-    MobileMenuComponent,
-    TopmenuComponent,
-    HomeComponent,
-    IndexBannerComponent,
-    ItemsListComponent,
-    SingleItemComponent,
-    IndexInfoComponent,
-    FooterComponent,
-    LoginComponent,
-    RegisterComponent,
-    ProfileComponent,
-    ListPageComponent,
-    DetailsComponent,
-    NotFoundComponent,
-    EditComponent,
-    CreateComponent,
-    MyItemsComponent,
-    MySingleItemComponent,
-    FavoritesComponent,
-    SearchPageComponent,
+    AppComponent
   ],
   imports: [
+    CoreModule,
+    UserModule,
+    RecipesModule,
+    UserRecipesModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
