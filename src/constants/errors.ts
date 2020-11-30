@@ -23,4 +23,5 @@ export const customErrors = {
     'maxLengthTotalTime': 'Максимална дължина на "Време за приготвяне" 10 символа!',
     'mustBeInteger': 'Порциите трябва да са цяло число по-голямо от нула!',
     'failedCreate': 'Неуспешно създаване на рецепта!',
+    'notSupportedFileType': 'Моля, качете снимка в jpg, png или jpeg формат!'
 }

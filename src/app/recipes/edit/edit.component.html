@@ -6,7 +6,7 @@
 
         <h3 class="inner_title">
                Kъм рецептата <a [routerLink]="[ROUTES.DETAILS, itemId]" class="title">
-                {{currentItem.title}}
+                {{currentItem?.title}}
             </a>
          </h3>
 
@@ -76,6 +76,10 @@
             </div>
 
             <div class="input_row">
+                <div *ngIf="getFormControls.uploadedImage.errors?.imageValidator" class="errorMsg">
+                    {{customErrors.notSupportedFileType}}
+                </div>
+                
                 <label class="lbl">
                     Качване на снимка
                     <span class="tred">*</span>
@@ -106,7 +110,7 @@
                 </div>
 
                 <label *ngIf="!currentItem?.imageUrl" class="upload_btn btn">
-                    <input type="file" (change)="imageHandler($event)">
+                    <input type="file" (change)="imageHandler($event)" formControlName="uploadedImage">
                     <fa-icon icon="upload" class="fa"></fa-icon>
                     качи
                 </label>

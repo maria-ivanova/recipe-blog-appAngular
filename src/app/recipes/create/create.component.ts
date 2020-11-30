@@ -7,6 +7,7 @@ import { FirebaseRequestsService } from '../../../services/firebase.requests.ser
 import { UserAuthService } from '../../../services/firebase.auth.service';
 import { firebaseErrors, customErrors } from '../../../constants/errors';
 import { IRecipe } from '../../../interfaces/recipe.interface';
+import { imageRegex, imageValidator } from 'src/app/shared/validators';
 
 import { AngularFireStorage } from '@angular/fire/storage';
 import { finalize } from "rxjs/operators";
@@ -32,6 +33,7 @@ export class CreateComponent implements OnInit {
     'yields': new FormControl('', [Validators.required, Validators.min(1)]),
     'ingredients': new FormControl('', [Validators.required]),
     'recipeDescription': new FormControl('', [Validators.required]),
+    'uploadedImage': new FormControl('', [imageValidator]),
   })
 
   constructor(
@@ -105,6 +107,11 @@ export class CreateComponent implements OnInit {
 
     if (!this.imageFile) {
       this.errorMsg = customErrors['missingImage'];
+      return;
+    }
+
+    if (!imageRegex.test(this.imageFile.name.toLowerCase())) {
+      this.errorMsg = customErrors['notSupportedFileType'];
       return;
     }
 
