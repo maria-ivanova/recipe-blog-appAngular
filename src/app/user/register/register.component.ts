@@ -7,6 +7,7 @@ import { firebaseErrors, customErrors } from '../../../constants/errors';
 import { UserAuthService } from '../../../services/firebase.auth.service';
 import { IRegister } from '../../../interfaces/register.interface';
 import ROUTES from '../../../constants/routes';
+import { rePasswordValidatorFactory } from 'src/app/shared/validators';
 
 @Component({
   selector: 'app-register',
@@ -14,11 +15,13 @@ import ROUTES from '../../../constants/routes';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  passwordControl = new FormControl('', [Validators.required, Validators.minLength(6)])
+
   registerForm = new FormGroup({
     'username': new FormControl('', [Validators.required]),
     'email': new FormControl('', [Validators.required, Validators.email]),
-    'password': new FormControl('', [Validators.required, Validators.minLength(6)]),
-    'rePassword': new FormControl('')
+    'password': this.passwordControl,
+    'rePassword': new FormControl('', [Validators.required, rePasswordValidatorFactory(this.passwordControl)])
   })
 
   customErrors = customErrors;
