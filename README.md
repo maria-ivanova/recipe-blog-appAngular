@@ -1,27 +1,86 @@
-# RecipeBlogApp
+## Spatulas Recipe Blog
+Culinary blog web application. Selection of recipes published by users and grouped by categories.
+Provides the ability to register, log in and log out of user profiles.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.0.
+github: https://github.com/maria-ivanova/recipe-blog-appAngular
 
-## Development server
+Use HTTPS: https://github.com/maria-ivanova/recipe-blog-appAngular.git
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Use SSH: git@github.com:maria-ivanova/recipe-blog-appAngular.git
 
-## Code scaffolding
+Тhis user profile can be used for testing:
+user: test@test.com
+password: 123456
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1. git clone
+2. npm install
+3. ng serve --open
 
-## Build
+## Technology stack
+- Angular CLI 10.2.0
+- AngularFire
+- angular-fontawesome
+- Firebase
+- ngx-toastr
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Application Structure
+The application have:
+- public part (accessible without authentication)
+- private part (available for registered users)
 
-## Running unit tests
+### Public part
+The public part is visible without authentication.
+- home page
+- login page
+- register page
+- list page of all recipes by category
+- details recipe page
+- search page
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Private Part
+Registered users have personal area in the web application accessible after successful login.
+- profile page
+- create recipe page
+- edit recipe page
+- details recipe page
+- my recipes
+- favorites recipes
 
-## Running end-to-end tests
+## Functionalities
+### Authentication and authorization
+Firebase is used for authentication and authorization. This functionality includes:
+- login of an existing user
+- new user registration
+- profile - each logged in user can change their password
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+### Recipes Functionalities
+These features are only available to logged in users:
+- create recipe - any registered user can publish a recipe. Recipes are stored in Firebase Realtime database.
+- edit recipe - only the creator of the recipe can edited it.
+- delete recipe - only the creator of the recipe can delete it.
+- аdd favorite recipe - only a logged in user who has not created the recipe can add the recipe to favorites.
+The creator of the recipe cannot add it to favorites.
 
-## Further help
+### My recipes
+Recipes created by the current user.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### My favorites
+Add recipes in favorites.
+
+### Search 
+Search recipes by title, ingredients, recipe description, category
+
+## Routing
+| Route	| Description | Page |
+|-------|-------------|------|
+|/      |Home         |http://localhost:4200/|
+|/login|Login page|http://localhost:4200/login|
+|/register|Register page|http://localhost:4200/register|
+|/profile|Profile page|http://localhost:4200/profile|
+|/create|Create a new recipe|http://localhost:4200/create|
+|/edit/:id|Edit recipe|http://localhost:4200/edit/-MERIK5gpVS9e_lk7CvH|
+|/details/:id|Details recipe page|http://localhost:4200/details/-MERIK5gpVS9e_lk7CvH|
+|/recipes/:categoryName|Recipes page by category|http://localhost:4200/recipes/%D0%A1%D0%B0%D0%BB%D0%B0%D1%82%D0%B8|
+|/myRecipes|Recipes published by the user|http://localhost:4200/myRecipes|
+|/myFavorites|User's favorite recipes|http://localhost:4200/myFavorites|
+|/search|Search page|http://localhost:4200/search|
