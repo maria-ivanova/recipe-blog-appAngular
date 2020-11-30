@@ -19,23 +19,24 @@ export class FavoritesComponent implements OnInit {
     public firebaseRequestsService: FirebaseRequestsService
   ) { }
 
+  get loggedUser() {
+    return this.userAuthService.user;
+  }
+
   getAllItems() {
-    this.userAuthService.activeUser().subscribe(data => {
-      this.currentUser = data;
+    this.currentUser = this.loggedUser;
 
-      this.firebaseRequestsService.getData().subscribe(data => {
-
-        if (data) {
-          this.itemsList = Object.keys(data).map(key => {
-            return {
-              id: key,
-              ...data[key]
-            }
-          })
-          .filter(el => el.likes !== 0)
-          .filter(el => el['likesArr'].includes(this.currentUser.uid));
-        }
-      })
+    this.firebaseRequestsService.getData().subscribe(data => {
+      if (data) {
+        this.itemsList = Object.keys(data).map(key => {
+          return {
+            id: key,
+            ...data[key]
+          }
+        })
+        .filter(el => el.likes !== 0)
+        .filter(el => el['likesArr'].includes(this.currentUser.uid));
+      }
     })
   }
 

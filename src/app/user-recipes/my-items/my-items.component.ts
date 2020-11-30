@@ -21,24 +21,25 @@ export class MyItemsComponent implements OnInit {
     public firebaseRequestsService: FirebaseRequestsService
   ) { }
 
+  get loggedUser() {
+    return this.userAuthService.user;
+  }
+
   getAllItems() {
-    this.userAuthService.activeUser().subscribe(data => {
-      this.currentUser = data;
+    this.currentUser = this.loggedUser;
 
-      this.firebaseRequestsService.getData().subscribe(data => {
+    this.firebaseRequestsService.getData().subscribe(data => {
 
-        if (data) {
-          this.itemsList = Object.keys(data).map(key => {
-            return {
-              id: key,
-              ...data[key]
-            }
-          })
-          .filter(el => el['creatorId'] === this.currentUser.uid)
-          .sort((a, b) => b['createdDate'] - a['createdDate']);
-        }
-      })
-     
+      if (data) {
+        this.itemsList = Object.keys(data).map(key => {
+          return {
+            id: key,
+            ...data[key]
+          }
+        })
+        .filter(el => el['creatorId'] === this.currentUser.uid)
+        .sort((a, b) => b['createdDate'] - a['createdDate']);
+      }
     })
   }
 

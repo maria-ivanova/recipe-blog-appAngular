@@ -16,7 +16,6 @@ export class IsLoggedIn {
 
     resolve(): void {
         this.userAuthService.activeUser().pipe(
-            take(1),
             map(user => !!user),
             tap(
                 isLoggedIn => {
