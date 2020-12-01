@@ -90,7 +90,7 @@
 
                     <ng-template #thenBlock>
                         <div class="img_box">
-                            <img src="{{currentItem?.imageUrl}}" alt="recipe pic">
+                            <img [src]="currentItem?.imageUrl" alt="recipe pic">
                             
                             <span class="btnDeleteImg" (click)="deleteImage()">
                                 <fa-icon icon="times" class="fa"></fa-icon>

@@ -97,7 +97,7 @@ imageHandler(event) {
       this.toastr.success('Успешно редактиране на рецепта!');
       this.errorMsg = '';
     }, error => {
-      this.errorMsg = customErrors['failedCreate'];
+      this.errorMsg = customErrors['failedEdit'];
     })
   }
 

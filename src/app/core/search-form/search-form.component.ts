@@ -14,7 +14,7 @@ import ROUTES from '../../../constants/routes';
 })
 export class SearchFormComponent implements OnInit {
   searchForm = new FormGroup({
-    'search': new FormControl(''),
+    'search': new FormControl(null),
   })
 
   itemsList: IRecipe[];
