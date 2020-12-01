@@ -90,7 +90,7 @@ imageHandler(event) {
 }
 
   editRecipe() {
-    this.currentItem = {...this.currentItem, ...this.editForm.value,};
+    this.currentItem = {...this.currentItem, ...this.editForm.value};
 
     this.firebaseRequestsService.postEdit(this.itemId, this.currentItem).subscribe(data => {
 

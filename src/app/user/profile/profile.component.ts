@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { firebaseErrors, customErrors } from '../../../constants/errors';
 import { UserAuthService } from '../../../services/firebase.auth.service';
 import ROUTES from '../../../constants/routes';
+import { rePasswordValidatorFactory } from 'src/app/shared/validators';
 
 @Component({
   selector: 'app-profile',
@@ -13,11 +14,13 @@ import ROUTES from '../../../constants/routes';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+  passwordControl = new FormControl('', [Validators.required, Validators.minLength(6)])
+
   profileForm = new FormGroup({
     'username': new FormControl({ value: '', disabled: true }),
     'email': new FormControl({ value: '', disabled: true }),
-    'password': new FormControl('', [Validators.required, Validators.minLength(6)]),
-    'rePassword': new FormControl('')
+    'password': this.passwordControl,
+    'rePassword': new FormControl('', [Validators.required, rePasswordValidatorFactory(this.passwordControl)])
   })
 
   customErrors = customErrors;
