@@ -19,8 +19,8 @@ import { SearchPageComponent } from './core/search-page/search-page.component';
 
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent, resolve: [ IsLoggedIn ] },
-  { path: 'register', component: RegisterComponent, resolve: [ IsLoggedIn ] },
+  { path: 'login', component: LoginComponent},
+  { path: 'register', component: RegisterComponent},
   { path: 'profile', component: ProfileComponent, canActivate: [ AuthGuard ] },
   { path: 'recipes/:category', component:  ListPageComponent },
   { path: 'details/:id', component:  DetailsComponent },

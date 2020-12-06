@@ -121,7 +121,7 @@ imageHandler(event) {
       return;
     }
 
-    if (!imageRegex.test(this.imageFile.name.toLowerCase())) {
+    if (this.imageFile && !imageRegex.test(this.imageFile.name.toLowerCase())) {
       this.errorMsg = customErrors['notSupportedFileType'];
       return;
     }

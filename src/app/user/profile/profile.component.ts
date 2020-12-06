@@ -55,6 +55,9 @@ export class ProfileComponent implements OnInit {
       .then(() => {
         this.toastr.success('Успешна промяна на парола!');
         this.errorMsg = '';
+        
+        this.userAuthService.logoutUser();
+        this.router.navigate([ROUTES.LOGIN]);
       })
       .catch(err => {
         if (err.code === 'auth/requires-recent-login') {
